@@ -6,21 +6,27 @@ def recipe_batches(recipe, ingredients):
     try:
         total = [0] * len(recipe);
         overall = 0
+
         for i in range(0,len(recipe)):
             cRec = list(recipe.keys())[i]
             cIng = list(ingredients.keys())[i]
+
             while recipe[cRec] <= ingredients[cIng]:
                 total[i] = total[i] + 1
                 ingredients[cRec] = ingredients[cRec] - recipe[cRec]
+
         for i in range(0,len(total)):
+            print(total[i])
             if i == 0:
                 overall = total[i]
             else:
                 if overall > total[i]:
                     overall = total[i]
         return overall
+
     except:
         return 0
+
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test

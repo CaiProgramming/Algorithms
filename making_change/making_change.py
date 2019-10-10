@@ -1,9 +1,17 @@
 #!/usr/bin/python
 
 import sys
-
-def making_change(amount, denominations):
-  pass 
+cache = {}
+def making_change(amount,denominations):
+    if amount in cache:
+        return cache[amount]
+    if (amount == 0):
+        return 1
+    elif (amount < 0 or denominations == []):
+        return 0
+    else:
+        result = making_change(amount - denominations[-1], denominations) + making_change(amount, denominations[:-1])
+        return result
 
 
 if __name__ == "__main__":
